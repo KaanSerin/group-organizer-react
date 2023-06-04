@@ -1,0 +1,9 @@
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+
+.customInput {
+    &::-webkit-input-placeholder {
+        color: $gray-500;
+    }
+}

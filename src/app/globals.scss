@@ -1,0 +1,41 @@
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+
+.btn-lg {
+    padding: 0.625rem 1rem !important;
+    font-size: 1rem !important;
+}
+
+.btn-purple {
+    background: $indigo-400 !important;
+    border-color: $indigo-400 !important;
+
+    &:hover, &:active {
+        background: $indigo-500 !important;
+        border-color: $indigo-500 !important;
+    }
+}
+
+.text-purple {
+    color: $indigo-400;
+}
+
+a {
+    text-decoration: none !important;
+    &:hover {
+        text-decoration: underline !important;
+    }
+}
+
+body {
+    margin: 0;
+}
+
+.mt-30 {
+    margin-top: 1.875rem;
+}
+
+.mt-35 {
+    margin-top: 2.188rem;
+}
