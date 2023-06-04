@@ -5,9 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f401857d-9e32-4631-9605-31f10c70edce" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/AuthContextProvider/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/contexts/AuthContext.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.eslintrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/signin/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/signin/layout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/signin/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/signin/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/signup/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/signup/layout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/signup/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/signup/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AuthLayout/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AuthLayout/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/InputWithLabel/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/InputWithLabel/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -19,6 +32,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -38,14 +52,17 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/kaanserin/Desktop/Webdev/NestJS/group-organizer-react/src/app",
+    "last_opened_file_path": "/Users/kaanserin/Desktop/Webdev/NestJS/group-organizer-react",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "/opt/homebrew/lib/node_modules/standard",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "prettierjs.PrettierConfiguration.Package": "/Users/kaanserin/Desktop/Webdev/NestJS/group-organizer-react/node_modules/prettier",
+    "settings.editor.selected.configurable": "settings.javascript.linters.eslint",
     "ts.external.directory.path": "/Users/kaanserin/Desktop/Webdev/NestJS/group-organizer-react/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
@@ -60,6 +77,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/app" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -84,7 +102,7 @@
       <workItem from="1685779814561" duration="1832000" />
       <workItem from="1685868162031" duration="343000" />
       <workItem from="1685868513550" duration="26000" />
-      <workItem from="1685868547517" duration="8078000" />
+      <workItem from="1685868547517" duration="16756000" />
     </task>
     <servers />
   </component>
