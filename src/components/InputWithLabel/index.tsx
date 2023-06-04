@@ -4,13 +4,14 @@ import {FormControl, FormLabel, InputGroup} from "react-bootstrap";
 export default function InputWithLabel({
                                            className,
                                            label,
-                                           placeholder
-                                       }: { className: string, label: string, placeholder: string }) {
+                                           placeholder,
+                                           type = "text",
+                                       }: { className: string, label: string, placeholder: string, type?: string }) {
     return (
         <div className={className}>
             <FormLabel className="fw-semibold">{label}</FormLabel>
             <InputGroup>
-                <FormControl className={styles.customInput} placeholder={placeholder}/>
+                <FormControl type={type} className={styles.customInput} placeholder={placeholder}/>
             </InputGroup>
         </div>
     )
