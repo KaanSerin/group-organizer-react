@@ -39,6 +39,9 @@
         user-select: none;
 
         width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
 
         .logoIcon {
             height: 2rem;
@@ -64,6 +67,13 @@
         color: $gray-700;
         margin-bottom: 1.313rem;
         border-radius: 0.5rem;
+
+        transition: padding-left 0.125s linear;
+
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
 
         .linkIconContainer {
             text-align: center;
