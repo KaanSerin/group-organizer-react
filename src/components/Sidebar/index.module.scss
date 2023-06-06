@@ -1,0 +1,119 @@
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+
+.sidebar, .sideBarInner {
+    transition: width 0.125s ease-in-out;
+}
+
+.sidebar {
+    width: 260px;
+
+    .sideBarInner {
+        padding: 1.25rem;
+        height: 100vh;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+        font-family: Inter, Helvetica, Arial, sans-serif;
+        width: 260px;
+    }
+
+    .toggleBtn {
+        color: $gray-400;
+        height: 1.0625rem;
+        margin-bottom: 1rem;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        pointer-events: none;
+        user-select: none;
+
+        width: 100%;
+
+        .logoIcon {
+            height: 2rem;
+        }
+
+        .companyName {
+            font-weight: 600;
+            font-size: 18px;
+            margin-left: 0.75rem;
+        }
+    }
+
+    .linksHeader {
+        margin: 2.625rem 0 0.875rem 0.938rem;
+        font-weight: 400;
+        color: $gray-400;
+    }
+
+    .link {
+        display: flex;
+        align-items: center;
+        padding: 0.5rem 0.5rem 0.5rem 0.938rem;
+        color: $gray-700;
+        margin-bottom: 1.313rem;
+        border-radius: 0.5rem;
+
+        .linkIconContainer {
+            text-align: center;
+            width: 27px;
+            margin-right: 1rem;
+        }
+
+        svg {
+            height: 1.25rem;
+        }
+
+        &:hover {
+            cursor: pointer;
+            background: rgba($indigo-400, 0.06);
+        }
+    }
+
+    .linkActive, .link.linkActive:hover {
+        color: $indigo-400;
+        background: rgba($indigo-400, 0.1);
+    }
+}
+
+
+.sidebarCollapsed.sidebarNotHovering {
+    width: 80px;
+
+    .sideBarInner {
+        width: 80px;
+    }
+
+
+    .link {
+        padding: 0.5rem 0.125rem 0.5rem 0.125rem;
+
+        .linkIconContainer {
+            margin-right: 0;
+
+            svg {
+                margin-right: -0.5rem;
+            }
+        }
+    }
+}
+
+.sidebarCollapsed.sidebarHovering {
+    position: relative;
+
+    .sideBarInner {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 99;
+        background: #FFFFFF;
+        width: 260px;
+    }
+}
