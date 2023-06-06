@@ -1,9 +1,11 @@
 import './globals.scss';
-import { Inter } from 'next/font/google';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AuthContextProvider from '@/components/AuthContextProvider';
+import { config } from '@fortawesome/fontawesome-svg-core';
+import '@fortawesome/fontawesome-svg-core/styles.css';
+config.autoAddCss = false;
 
-const inter = Inter({ subsets: ['latin'] });
+import Sidebar from '@/components/Sidebar';
 
 export const metadata = {
   title: 'Create Next App',
@@ -13,9 +15,12 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <AuthContextProvider>{children}</AuthContextProvider>
-      </body>
+      <AuthContextProvider>
+        <body className={'d-flex'}>
+          <Sidebar />
+          {children}
+        </body>
+      </AuthContextProvider>
     </html>
   );
 }
