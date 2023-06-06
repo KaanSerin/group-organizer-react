@@ -10,11 +10,15 @@
     width: 260px;
 
     .sideBarInner {
+        background: #FFFFFF;
         padding: 1.25rem;
         height: 100vh;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
         font-family: Inter, Helvetica, Arial, sans-serif;
         width: 260px;
+
+        position: relative;
+        z-index: 2;
     }
 
     .toggleBtn {
@@ -106,14 +110,12 @@
 }
 
 .sidebarCollapsed.sidebarHovering {
-    position: relative;
+    width: 80px;
 
     .sideBarInner {
         position: absolute;
         top: 0;
         left: 0;
-        z-index: 99;
-        background: #FFFFFF;
         width: 260px;
     }
 }
