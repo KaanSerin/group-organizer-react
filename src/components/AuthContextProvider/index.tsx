@@ -2,8 +2,10 @@
 import AuthContext from '@/contexts/AuthContext';
 import { ReactNode, useEffect, useState } from 'react';
 import { registerResetAuthMethod } from '@/libs/axios';
+import { useRouter } from 'next/navigation';
 
 export default function AuthContextProvider({ children }: { children: ReactNode }) {
+  const router = useRouter();
   const [user, setUser] = useState(null);
   const getUser = () => {
     const userData = localStorage.getItem('user');
@@ -18,6 +20,7 @@ export default function AuthContextProvider({ children }: { children: ReactNode 
 
     registerResetAuthMethod(() => {
       setUser(null);
+      router.push('/signin');
     });
   }, []);
 
