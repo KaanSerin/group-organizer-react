@@ -20,7 +20,7 @@ export default function SignUp() {
 
   useEffect(() => {
     if (!auth.user) return;
-    router.push('/');
+    router.push('/dashboard');
   }, [auth, router]);
 
   const onFormSubmit = async (e: FormEvent<HTMLFormElement>) => {

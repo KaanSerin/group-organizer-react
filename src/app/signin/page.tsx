@@ -13,7 +13,7 @@ export default function SignIn() {
 
   useEffect(() => {
     if (!auth.user) return;
-    router.push('/');
+    router.push('/dashboard');
   }, [auth, router]);
 
   const [formData, setFormData] = useState({
