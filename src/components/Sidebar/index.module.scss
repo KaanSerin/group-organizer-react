@@ -88,12 +88,20 @@
         &:hover {
             cursor: pointer;
             background: rgba($indigo-400, 0.06);
+            text-decoration: none !important;
         }
     }
 
     .linkActive, .link.linkActive:hover {
         color: $indigo-400;
         background: rgba($indigo-400, 0.1);
+    }
+
+    .divider {
+        margin: 2.25rem 0;
+        display: block;
+        content: '';
+        border-bottom: 2px solid $gray-200;
     }
 }
 

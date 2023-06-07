@@ -9,10 +9,15 @@ import {
   faHouse,
   faSitemap,
   faUser,
-  faEllipsisH as faEllipsis
+  faEllipsisH as faEllipsis,
+  faDoorOpen
 } from '@fortawesome/free-solid-svg-icons';
+import Link from 'next/link';
+import axios from '@/libs/axios';
+import { usePathname } from 'next/navigation';
 
 export default function Sidebar() {
+  const pathName = usePathname();
   const [expandFixed, setExpandFixed] = useState(true);
   const [expanded, setExpanded] = useState(true);
   const [hovering, setHovering] = useState(false);
@@ -42,6 +47,14 @@ export default function Sidebar() {
     setHovering(false);
   };
 
+  const logout = async () => {
+    try {
+      await axios.post('auth/logout');
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   let className = [
     styles.sidebar,
     expanded && expandFixed ? styles.sidebarExpanded : styles.sidebarCollapsed,
@@ -49,9 +62,11 @@ export default function Sidebar() {
   ].join(' ');
 
   const toggleIcon = expanded && expandFixed ? faAlignRight : faBars;
-  const getLinkClasses = (isActive = false) => {
-    return [styles.link, isActive ? styles.linkActive : ''].join(' ');
+  const getLinkClasses = (route: string) => {
+    return [styles.link, pathName === route ? styles.linkActive : ''].join(' ');
   };
+
+  console.log(pathName);
 
   return (
     <section className={className}>
@@ -81,14 +96,14 @@ export default function Sidebar() {
           )}
         </div>
 
-        <div className={getLinkClasses(true)}>
+        <Link href={'/dashboard'} className={getLinkClasses('/dashboard')}>
           <div className={styles.linkIconContainer}>
             <FontAwesomeIcon className={styles.logoIcon} onClick={onToggleClicked} icon={faHouse} />
           </div>
           {expanded ? <div className={styles.name}>Home</div> : <></>}
-        </div>
+        </Link>
 
-        <div className={getLinkClasses(false)}>
+        <Link href={'/groups'} className={getLinkClasses('/groups')}>
           <div className={styles.linkIconContainer}>
             <FontAwesomeIcon
               className={styles.logoIcon}
@@ -97,13 +112,26 @@ export default function Sidebar() {
             />
           </div>
           {expanded ? <div className={styles.name}>Groups</div> : <></>}
-        </div>
+        </Link>
 
-        <div className={getLinkClasses(false)}>
+        <Link href={'/account'} className={getLinkClasses('/account')}>
           <div className={styles.linkIconContainer}>
             <FontAwesomeIcon className={styles.logoIcon} onClick={onToggleClicked} icon={faUser} />
           </div>
           {expanded ? <div className={styles.name}>Account</div> : <></>}
+        </Link>
+
+        <div className={styles.divider} />
+
+        <div onClick={logout} className={getLinkClasses('#')}>
+          <div className={styles.linkIconContainer}>
+            <FontAwesomeIcon
+              className={styles.logoIcon}
+              onClick={onToggleClicked}
+              icon={faDoorOpen}
+            />
+          </div>
+          {expanded ? <div className={styles.name}>Logout</div> : <></>}
         </div>
       </div>
     </section>
