@@ -1,4 +1,5 @@
 'use client';
+import styles from './index.module.scss';
 import { ReactNode, useEffect } from 'react';
 import Sidebar from '@/components/Sidebar';
 import { useRouter } from 'next/navigation';
@@ -13,9 +14,9 @@ export default function AppLayout({ children }: { children: ReactNode }) {
   }, [router]);
 
   return (
-    <main className="d-flex">
+    <div className="d-flex">
       <Sidebar />
-      {children}
-    </main>
+      <main className={styles.main}>{children}</main>
+    </div>
   );
 }
