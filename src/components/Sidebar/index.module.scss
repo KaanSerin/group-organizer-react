@@ -3,10 +3,14 @@
 @import "bootstrap/scss/mixins";
 
 .sidebar, .sideBarInner {
-    transition: width 0.125s ease-in-out;
+    transition: width 0.2s ease-in-out;
 }
 
 .sidebar {
+    position: relative;
+    left: 0;
+
+    transition: all 0.2s ease-in-out;
     width: 260px;
 
     .sideBarInner {
@@ -135,5 +139,17 @@
         top: 0;
         left: 0;
         width: 260px;
+    }
+}
+
+@media (max-width: 1201px) {
+    .sidebar, .sidebarCollapsed.sidebarNotHovering {
+        left: -81px;
+        width: 0;
+    }
+
+    .sidebar .sideBarInner {
+        width: 0;
+        z-index: 1;
     }
 }
