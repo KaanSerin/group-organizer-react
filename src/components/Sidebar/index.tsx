@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import styles from './index.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -14,10 +14,13 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
 import axios from '@/libs/axios';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
+import AuthContext from '@/contexts/AuthContext';
 
 export default function Sidebar() {
+  const router = useRouter();
   const pathName = usePathname();
+  const { user, setUser } = useContext(AuthContext);
   const [expandFixed, setExpandFixed] = useState(true);
   const [expanded, setExpanded] = useState(true);
   const [hovering, setHovering] = useState(false);
@@ -50,6 +53,9 @@ export default function Sidebar() {
   const logout = async () => {
     try {
       await axios.post('auth/logout');
+      setUser(null);
+      localStorage.removeItem('user');
+      router.push('/signin');
     } catch (e) {
       console.log(e);
     }
@@ -100,7 +106,7 @@ export default function Sidebar() {
           <div className={styles.linkIconContainer}>
             <FontAwesomeIcon className={styles.logoIcon} onClick={onToggleClicked} icon={faHouse} />
           </div>
-          {expanded ? <div className={styles.name}>Home</div> : <></>}
+          {expanded ? <div className={styles.name}>Dashboard</div> : <></>}
         </Link>
 
         <Link href={'/groups'} className={getLinkClasses('/groups')}>
