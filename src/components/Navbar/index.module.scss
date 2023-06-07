@@ -1,0 +1,57 @@
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+
+.navbar {
+  position: relative;
+  top: 0;
+  max-height: none;
+  transition: all 0.2s ease-in-out;
+
+  background: #FFFFFF;
+  padding: 0.563rem 1.313rem;
+  border-radius: 0.375rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  color: $gray-400;
+
+  .toggleBtn:hover {
+    cursor: pointer;
+  }
+
+  section.user {
+    display: flex;
+    align-items: center;
+    color: $gray-700;
+
+    .bellIcon {
+      height: 1.25rem;
+
+      &:hover{
+        cursor: pointer;
+      }
+    }
+
+    .userIcon {
+      height: 1.875rem;
+      margin-left: 1.5rem;
+    }
+
+
+    .userName {
+        margin-left: 0.5rem;
+        font-size: 0.813rem;
+        font-weight: 500;
+    }
+  }
+}
+
+@media (min-width: 1201px) {
+  .navbar {
+    top: -3.25rem;
+    max-height: 0;
+  }
+}
