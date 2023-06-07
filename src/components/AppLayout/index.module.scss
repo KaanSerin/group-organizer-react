@@ -6,4 +6,11 @@
     background-color: rgba($indigo-100, 0.1);
     width: 100%;
     padding: 1rem 2rem;
+    transition: all 0.2s ease-in-out;
+}
+
+@media (max-width: 767px) {
+    .main {
+        padding: 0.5rem;
+    }
 }
