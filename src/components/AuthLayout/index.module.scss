@@ -1,4 +1,4 @@
-.main {
+.layoutContainer {
     display: grid;
     grid-template-columns: 1fr 1fr;
     height: 100vh;
@@ -18,7 +18,7 @@
 }
 
 @media (max-width: 991px) {
-    .main {
+    .layoutContainer {
         grid-template-columns: 1fr;
     }
 
