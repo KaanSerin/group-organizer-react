@@ -17,9 +17,9 @@ export default function AppLayout({ children }: { children: ReactNode }) {
   return (
     <div className="d-flex">
       <Sidebar />
-      <section className={styles.main}>
+      <section className={styles.layoutContainer}>
         <Navbar />
-        <main>{children}</main>
+        <main className={styles.main}>{children}</main>
       </section>
     </div>
   );
