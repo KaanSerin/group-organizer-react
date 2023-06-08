@@ -1,6 +1,4 @@
-@import "bootstrap/scss/functions";
-@import "bootstrap/scss/variables";
-@import "bootstrap/scss/mixins";
+@import "bootstrap";
 
 .btn-lg {
     padding: 0.625rem 1rem !important;
@@ -14,6 +12,18 @@
     &:hover, &:active {
         background: $indigo-500 !important;
         border-color: $indigo-500 !important;
+    }
+}
+
+.btn-outline-purple {
+    @extend .btn-outline-primary;
+
+    border-color: $indigo-400 !important;
+    color: $indigo-400 !important;
+
+    &:hover, &:active {
+        color: #FFFFFF !important;
+        background: $indigo-400 !important;
     }
 }
 
