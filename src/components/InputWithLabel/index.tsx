@@ -13,7 +13,7 @@ export default function InputWithLabel({
 }: {
   className: string;
   label: string;
-  placeholder: string;
+  placeholder?: string;
   type?: string;
   name?: string;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
@@ -24,6 +24,7 @@ export default function InputWithLabel({
       <FormLabel className="fw-semibold">{label}</FormLabel>
       <InputGroup>
         <FormControl
+          as={type === 'textarea' ? 'textarea' : 'input'}
           name={name}
           onChange={onChange}
           value={value}
