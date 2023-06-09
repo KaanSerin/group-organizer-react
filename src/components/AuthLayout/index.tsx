@@ -3,7 +3,7 @@ import { ReactNode } from 'react';
 
 export default function AuthLayout({ children }: { children: ReactNode }) {
   return (
-    <main className={styles.main}>
+    <main className={styles.layoutContainer}>
       <section className={styles.childrenSection}>
         <>{children}</>
       </section>
