@@ -1,23 +1,34 @@
+'use client';
 import styles from './index.module.scss';
-import ProfileCard from '@/components/ProfileCard';
-import fetchUrl from '@/libs/fetch';
+import ProfileCard, { UserProfile } from '@/components/ProfileCard';
+import { useEffect, useState } from 'react';
+import axios from '@/libs/axios';
 
-const getUserProfile = async () => {
-  try {
-    return await fetchUrl('/auth/profile');
-  } catch (e) {
-    console.log(e);
-    return {};
-  }
-};
+export default function Account() {
+  const [profile, setProfile] = useState<UserProfile | {}>({});
 
-export default async function Account() {
-  const profile = await getUserProfile();
+  const getUserProfile = async () => {
+    try {
+      const res = await axios.get('/auth/profile');
+      setProfile(res.data);
+    } catch (e) {
+      console.log(e);
+      return {};
+    }
+  };
+
+  useEffect(() => {
+    getUserProfile();
+  }, []);
 
   return (
     <div>
       <h3 className={styles.pageTitle}>Account</h3>
-      <ProfileCard profile={profile} />
+      {Object.keys(profile).length > 0 ? (
+        <ProfileCard profile={profile as UserProfile} />
+      ) : (
+        <div>Loading...</div>
+      )}
     </div>
   );
 }
