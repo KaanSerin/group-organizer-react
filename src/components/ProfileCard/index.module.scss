@@ -1,0 +1,62 @@
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+
+.profileContainer {
+  .avatar {
+    margin: auto;
+    width: fit-content;
+    position: relative;
+
+    img {
+      border: 2px solid $indigo-400;
+      border-radius: 50%;
+      height: 6.625rem;
+      width: 6.625rem;
+      object-fit: cover;
+    }
+
+    .userIconContainer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 6.375rem;
+      height: 6.375rem;
+      border-radius: 50%;
+      background: $indigo-400;
+
+      svg {
+        color: #FFFFFF;
+        height: 3.5rem;
+      }
+    }
+
+    .penIcon {
+      box-sizing: border-box;
+      color: #FFFFFF;
+      background: $indigo-400;
+      width: 1.455rem;
+      height: 1.455rem;
+      padding: 0.405rem;
+      border-radius: 50%;
+
+      position: absolute;
+      bottom: 0.208rem;
+      right: 0.416rem;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .userIconContainer + .penIcon {
+      width: 1.563rem;
+      height: 1.563rem;
+      border: 1px solid #FFFFFF;
+    }
+  }
+
+  .buttons {
+    row-gap: 1.25rem;
+    margin-top: 2.25rem;
+  }
+}
