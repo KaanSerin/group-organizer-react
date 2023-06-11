@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import AuthContextProvider from '@/components/AuthContextProvider';
 import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
+import 'react-phone-number-input/style.css';
 config.autoAddCss = false;
 
 export const metadata = {
