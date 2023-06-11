@@ -1,0 +1,31 @@
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/variables-dark";
+@import "bootstrap/scss/forms";
+
+.countryPhoneInputContainer {
+  margin-left: 1rem;
+
+  .phoneInputLabel {
+    margin-left: -1rem;
+    font-weight: $font-weight-semibold;
+  }
+
+  .countryPhoneInput {
+    input {
+      @extend .form-control;
+      margin-left: -3.5rem;
+
+      padding-left: 4rem;
+    }
+
+    select {
+      @extend .form-select;
+    }
+
+    select + div {
+      box-shadow: none !important;
+    }
+  }
+}
