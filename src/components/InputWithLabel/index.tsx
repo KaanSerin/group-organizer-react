@@ -9,7 +9,8 @@ export default function InputWithLabel({
   type = 'text',
   name,
   onChange,
-  value
+  value,
+  disabled
 }: {
   className: string;
   label: string;
@@ -18,6 +19,7 @@ export default function InputWithLabel({
   name?: string;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   value?: string;
+  disabled?: boolean;
 }) {
   return (
     <div className={className}>
@@ -31,6 +33,7 @@ export default function InputWithLabel({
           type={type}
           className={styles.customInput}
           placeholder={placeholder}
+          disabled={disabled}
         />
       </InputGroup>
     </div>
