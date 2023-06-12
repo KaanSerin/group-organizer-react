@@ -68,11 +68,17 @@ export default function Sidebar() {
   ].join(' ');
 
   const toggleIcon = expanded && expandFixed ? faAlignRight : faBars;
-  const getLinkClasses = (route: string) => {
-    return [styles.link, pathName === route ? styles.linkActive : ''].join(' ');
+  const getLinkClasses = (route: string, includeSubdomains: boolean = true) => {
+    if (includeSubdomains) {
+      const pathParts = pathName.split('/');
+      return [styles.link, pathParts[1] === route ? styles.linkActive : ''].join(' ');
+    } else {
+      return [
+        styles.link,
+        pathName.replace('/', '') === route.replace('/', '') ? styles.linkActive : ''
+      ].join(' ');
+    }
   };
-
-  console.log(pathName);
 
   return (
     <section className={className}>
@@ -102,14 +108,14 @@ export default function Sidebar() {
           )}
         </div>
 
-        <Link href={'/dashboard'} className={getLinkClasses('/dashboard')}>
+        <Link href={'/dashboard'} className={getLinkClasses('dashboard', false)}>
           <div className={styles.linkIconContainer}>
             <FontAwesomeIcon className={styles.logoIcon} onClick={onToggleClicked} icon={faHouse} />
           </div>
           {expanded ? <div className={styles.name}>Dashboard</div> : <></>}
         </Link>
 
-        <Link href={'/groups'} className={getLinkClasses('/groups')}>
+        <Link href={'/groups'} className={getLinkClasses('groups')}>
           <div className={styles.linkIconContainer}>
             <FontAwesomeIcon
               className={styles.logoIcon}
@@ -120,7 +126,7 @@ export default function Sidebar() {
           {expanded ? <div className={styles.name}>Groups</div> : <></>}
         </Link>
 
-        <Link href={'/account'} className={getLinkClasses('/account')}>
+        <Link href={'/account'} className={getLinkClasses('account')}>
           <div className={styles.linkIconContainer}>
             <FontAwesomeIcon className={styles.logoIcon} onClick={onToggleClicked} icon={faUser} />
           </div>
