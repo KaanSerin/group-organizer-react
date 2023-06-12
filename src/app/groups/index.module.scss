@@ -1,5 +1,11 @@
 .createGroupBtn {
+  display: flex;
+  align-items: center;
   margin-left: 1.75rem;
+
+  &:hover {
+    text-decoration: none !important;
+  }
 }
 
 .groupsContainer {
