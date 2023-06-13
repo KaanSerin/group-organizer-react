@@ -170,6 +170,7 @@ export default function ProfileCard({ profile }: { profile: UserProfile }) {
                 value={formData.bio}
                 onChange={onFormDataChange}
                 type="textarea"
+                rows={3}
               />
             </Col>
           </Row>
