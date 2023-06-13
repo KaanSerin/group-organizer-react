@@ -1,6 +1,18 @@
 import styles from './index.module.scss';
-import { FormControl, FormControlProps, FormLabel, InputGroup } from 'react-bootstrap';
-import { ChangeEvent, FormEvent } from 'react';
+import { FormControl, FormLabel, InputGroup } from 'react-bootstrap';
+import { ChangeEvent } from 'react';
+
+interface InputWithLabelProps {
+  className?: string;
+  label: string;
+  placeholder?: string;
+  type?: string;
+  name?: string;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  value?: string;
+  disabled?: boolean;
+  rows?: number;
+}
 
 export default function InputWithLabel({
   className,
@@ -10,17 +22,9 @@ export default function InputWithLabel({
   name,
   onChange,
   value,
-  disabled
-}: {
-  className: string;
-  label: string;
-  placeholder?: string;
-  type?: string;
-  name?: string;
-  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
-  value?: string;
-  disabled?: boolean;
-}) {
+  disabled,
+  rows
+}: InputWithLabelProps) {
   return (
     <div className={className}>
       <FormLabel className="fw-semibold">{label}</FormLabel>
@@ -34,6 +38,8 @@ export default function InputWithLabel({
           className={styles.customInput}
           placeholder={placeholder}
           disabled={disabled}
+          // @ts-ignore
+          rows={type === 'textarea' ? rows : undefined}
         />
       </InputGroup>
     </div>
