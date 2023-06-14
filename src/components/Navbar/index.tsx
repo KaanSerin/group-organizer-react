@@ -11,7 +11,7 @@ export default function Navbar({ onToggleClicked }: { onToggleClicked: () => voi
       <FontAwesomeIcon className={styles.toggleBtn} onClick={onToggleClicked} icon={faBars} />
       <section className={styles.user}>
         <FontAwesomeIcon className={styles.bellIcon} icon={faBell} />
-        <div onClick={() => router.push('/account')} className={'d-flex align-items-center po'}>
+        <div onClick={() => router.push('/account')} className={styles.userNameIcon}>
           <FontAwesomeIcon className={styles.userIcon} icon={faUserCircle} />
           <div className={styles.userName}>Admin User</div>
         </div>

@@ -28,10 +28,11 @@
     color: $gray-800;
 
     .bellIcon {
+      color: $gray-400;
       height: 1.25rem;
 
       &:hover{
-        cursor: pointer;
+        cursor: not-allowed;
       }
     }
 
@@ -45,6 +46,15 @@
         margin-left: 0.5rem;
         font-size: 0.813rem;
         font-weight: 500;
+    }
+
+    .userNameIcon {
+      display: flex;
+      align-items: center;
+
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 }
