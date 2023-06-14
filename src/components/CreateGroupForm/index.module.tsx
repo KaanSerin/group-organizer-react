@@ -1,7 +1,7 @@
 'use client';
 import styles from './index.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPen } from '@fortawesome/free-solid-svg-icons';
+import { faPen, faImage } from '@fortawesome/free-solid-svg-icons';
 import Card from '@/components/Card';
 import InputWithLabel from '@/components/InputWithLabel';
 import { Button, Col, Row } from 'react-bootstrap';
@@ -43,7 +43,8 @@ export default function CreateGroupForm() {
     <div className={styles.createGroupForm}>
       <Card>
         <div className={styles.groupImageContainer}>
-          <FontAwesomeIcon icon={faPen} />
+          <FontAwesomeIcon className={styles.imageIcon} icon={faImage} />
+          <FontAwesomeIcon className={styles.penIcon} icon={faPen} />
         </div>
 
         <form onSubmit={createGroup}>
