@@ -1,6 +1,6 @@
 import styles from './index.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircle, faUserGroup } from '@fortawesome/free-solid-svg-icons';
+import { faCircle, faUserGroup, faImage } from '@fortawesome/free-solid-svg-icons';
 
 export interface GroupInfo {
   id: number;
@@ -15,18 +15,20 @@ export interface GroupInfo {
 export default function GroupCard({ info }: { info: GroupInfo }) {
   const maxDescriptionLength = 140;
 
-  const cardStyle = {
-    height: '4.875rem',
-    backgroundImage: `url(${info.bannerImageUrl})`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
-    borderRadius: '0.375rem 0.375rem 0 0'
-  };
+  const cardStyle = info.bannerImageUrl
+    ? {
+        backgroundImage: `url(${info.bannerImageUrl})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }
+    : {};
 
   return (
     <div className={styles.groupCard}>
-      <section className={'card-banner'} style={cardStyle} />
+      <section className={styles.cardBanner} style={cardStyle}>
+        {info.bannerImageUrl ? <></> : <FontAwesomeIcon icon={faImage} />}
+      </section>
       <section className={styles.cardBody}>
         <div className={'card-body-header d-flex align-items-center'}>
           <h6 className={'fw-semibold mb-0'}>{info.name}</h6>
