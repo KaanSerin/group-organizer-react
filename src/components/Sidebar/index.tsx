@@ -1,5 +1,5 @@
 'use client';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import styles from './index.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -10,22 +10,46 @@ import {
   faSitemap,
   faUser,
   faEllipsisH as faEllipsis,
-  faDoorOpen
+  faDoorOpen,
+  faX
 } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
 import axios from '@/libs/axios';
 import { usePathname, useRouter } from 'next/navigation';
 import AuthContext from '@/contexts/AuthContext';
 
-export default function Sidebar() {
+export default function Sidebar({ toggleTrigger }: { toggleTrigger?: number }) {
   const router = useRouter();
   const pathName = usePathname();
   const { user, setUser } = useContext(AuthContext);
   const [expandFixed, setExpandFixed] = useState(true);
   const [expanded, setExpanded] = useState(true);
   const [hovering, setHovering] = useState(false);
+  const [mobileExpanded, setMobileExpanded] = useState(false);
+
+  window.addEventListener('resize', () => {
+    if (!mobileExpanded) return;
+    setMobileExpanded(false);
+  });
+
+  useEffect(() => {
+    if (!toggleTrigger) return;
+    onHeaderToggle();
+  }, [toggleTrigger]);
+
+  const onHeaderToggle = () => {
+    setExpandFixed(true);
+    setExpanded(true);
+    setHovering(true);
+    setMobileExpanded(!mobileExpanded);
+  };
 
   const onToggleClicked = () => {
+    if (mobileExpanded) {
+      setMobileExpanded(false);
+      return;
+    }
+
     if (!expandFixed) {
       setExpandFixed(true);
       return;
@@ -64,10 +88,11 @@ export default function Sidebar() {
   let className = [
     styles.sidebar,
     expanded && expandFixed ? styles.sidebarExpanded : styles.sidebarCollapsed,
-    hovering ? styles.sidebarHovering : styles.sidebarNotHovering
+    hovering ? styles.sidebarHovering : styles.sidebarNotHovering,
+    mobileExpanded ? styles.sidebarMobileExpanded : styles.sidebarMobileCollapsed
   ].join(' ');
 
-  const toggleIcon = expanded && expandFixed ? faAlignRight : faBars;
+  const toggleIcon = mobileExpanded ? faX : expanded && expandFixed ? faAlignRight : faBars;
   const getLinkClasses = (route: string, includeSubdomains: boolean = true) => {
     if (includeSubdomains) {
       const pathParts = pathName.split('/');
@@ -146,6 +171,12 @@ export default function Sidebar() {
           {expanded ? <div className={styles.name}>Logout</div> : <></>}
         </div>
       </div>
+
+      {mobileExpanded ? (
+        <div className={styles.blackBackground} onClick={() => setMobileExpanded(false)} />
+      ) : (
+        <></>
+      )}
     </section>
   );
 }
