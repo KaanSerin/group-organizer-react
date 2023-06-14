@@ -4,3 +4,9 @@
 .formSection {
   margin-top: 2.875rem;
 }
+
+@media (max-width: 767px) {
+  .formSection {
+    margin-top: 1rem;
+  }
+}

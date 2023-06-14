@@ -5,3 +5,9 @@
     font-weight: $font-weight-semibold;
     margin-bottom: 2.25rem;
 }
+
+@media (max-width: 767px) {
+    .pageTitle {
+        margin-bottom: 1rem;
+    }
+}
