@@ -1,6 +1,7 @@
 import styles from './index.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircle, faUserGroup, faImage } from '@fortawesome/free-solid-svg-icons';
+import { useRouter } from 'next/navigation';
 
 export interface GroupInfo {
   id: number;
@@ -13,6 +14,7 @@ export interface GroupInfo {
 }
 
 export default function GroupCard({ info }: { info: GroupInfo }) {
+  const router = useRouter();
   const maxDescriptionLength = 140;
 
   const cardStyle = info.bannerImageUrl
@@ -25,7 +27,7 @@ export default function GroupCard({ info }: { info: GroupInfo }) {
     : {};
 
   return (
-    <div className={styles.groupCard}>
+    <div onClick={() => router.push(`/groups/${info.id}`)} className={styles.groupCard}>
       <section className={styles.cardBanner} style={cardStyle}>
         {info.bannerImageUrl ? <></> : <FontAwesomeIcon icon={faImage} />}
       </section>
