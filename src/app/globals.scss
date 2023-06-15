@@ -57,3 +57,26 @@ body {
 .mt-35 {
     margin-top: 2.188rem;
 }
+
+.page-title {
+    font-weight: $font-weight-semibold;
+    margin-bottom: 2.25rem;
+}
+
+@media (max-width: 767px) {
+    .page-title {
+        margin-bottom: 1rem;
+    }
+}
+
+.nav-item a.nav-link {
+    color: $gray-800;
+
+    &:hover {
+        text-decoration: none !important;
+    }
+
+    &.active {
+        background-color: $indigo-400;
+    }
+}

@@ -1,5 +1,4 @@
 'use client';
-import styles from './index.module.scss';
 import ProfileCard, { UserProfile } from '@/components/ProfileCard';
 import { useEffect, useState } from 'react';
 import axios from '@/libs/axios';
@@ -23,7 +22,7 @@ export default function Account() {
 
   return (
     <div>
-      <h3 className={styles.pageTitle}>Account</h3>
+      <h3 className={'page-title'}>Account</h3>
       {Object.keys(profile).length > 0 ? (
         <ProfileCard profile={profile as UserProfile} />
       ) : (
