@@ -1,0 +1,115 @@
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+
+.eventCard {
+  display: flex;
+  background: #FFFFFF;
+  max-width: 45rem;
+  box-shadow: $box-shadow-sm;
+  border-radius: 0.5rem;
+
+  .eventImageContainer {
+    width: 12rem;
+    height: 10rem;
+    border-radius: 0.5rem 0 0 0.5rem;
+    background: $gray-300;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .imageBackground {
+      width: 100%;
+      height: 100%;
+    }
+
+    .noImageIcon {
+      height: 2.5rem;
+      color: $gray-500;
+    }
+  }
+
+  .eventDetails {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+    padding: 1rem;
+
+    .cardHeader {
+      width: 100%;
+
+      h5 {
+        max-width: 100%;
+        margin-bottom: 0.438rem;
+      }
+
+      p {
+        color: $gray-600;
+        max-width: 100%;
+
+        span {
+          margin-right: 0.75rem;
+        }
+      }
+    }
+
+    .cardFooter {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+
+      .userContainer {
+        display: flex;
+        align-items: center;
+        flex-grow: 1;
+
+        .userPicture {
+          width: 2.625rem;
+          height: 2.625rem;
+          border-radius: 50%;
+          border: 1px solid $indigo-400;
+
+          margin-right: 0.75rem;
+        }
+
+        .userPictureIcon {
+          box-sizing: border-box;
+          width: 2.625rem;
+          height: 2.625rem;
+          padding: 0.75rem;
+          background: $gray-300;
+          color: $gray-500;
+
+          border: 1px solid $indigo-400;
+          border-radius: 50%;
+          margin-right: 0.75rem;
+        }
+
+        .createUserName {
+          flex: 1;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+
+  &:hover {
+    box-shadow: $modal-content-box-shadow-sm-up;
+  }
+}
+
+@media screen and (max-width: 448px) {
+  .eventCard {
+    flex-direction: column;
+
+    .eventImageContainer {
+      width: 100%;
+      height: 5rem;
+      border-radius: 0.5rem 0.5rem 0 0;
+    }
+  }
+}
