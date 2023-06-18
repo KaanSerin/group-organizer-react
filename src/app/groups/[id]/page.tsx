@@ -5,6 +5,7 @@ import axios from '@/libs/axios';
 import { useParams } from 'next/navigation';
 import Skeleton from 'react-loading-skeleton';
 import GoBackButton from '@/components/GoBackButton';
+import GroupEvents from '@/components/GroupEvents';
 
 interface GroupWithEvents {
   id: number;
@@ -63,7 +64,7 @@ export default function GroupView() {
 
         <Tab.Content>
           <Tab.Pane eventKey="events">
-            <div>Events</div>
+            <GroupEvents />
           </Tab.Pane>
 
           <Tab.Pane eventKey="about">
