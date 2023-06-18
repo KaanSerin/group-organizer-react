@@ -33,7 +33,7 @@ export default function GroupCard({ info }: { info: GroupInfo }) {
       </section>
       <section className={styles.cardBody}>
         <div className={'card-body-header d-flex align-items-center'}>
-          <h6 className={'fw-semibold mb-0'}>{info.name}</h6>
+          <h5 className={'fw-semibold mb-0'}>{info.name}</h5>
 
           <div className={info.joined ? styles.tagJoined : styles.tagNotJoined}>
             <FontAwesomeIcon icon={faCircle} width={6} height={6} />
