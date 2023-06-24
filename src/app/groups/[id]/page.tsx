@@ -1,11 +1,13 @@
 'use client';
 import { Nav, Tab } from 'react-bootstrap';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import axios from '@/libs/axios';
 import { useParams } from 'next/navigation';
 import Skeleton from 'react-loading-skeleton';
 import GoBackButton from '@/components/GoBackButton';
 import GroupEvents from '@/components/GroupEvents';
+import AuthContext from '@/contexts/AuthContext';
+import GroupAbout from '@/components/GroupAbout';
 
 interface GroupWithEvents {
   id: number;
@@ -20,6 +22,7 @@ interface GroupWithEvents {
 }
 
 export default function GroupView() {
+  const { user } = useContext(AuthContext);
   const [group, setGroup] = useState<GroupWithEvents>();
 
   const params = useParams();
@@ -57,9 +60,13 @@ export default function GroupView() {
           <Nav.Item>
             <Nav.Link eventKey="about">About</Nav.Link>
           </Nav.Item>
-          <Nav.Item>
-            <Nav.Link eventKey="members">Members</Nav.Link>
-          </Nav.Item>
+          {group && group.createdBy === user?.id ? (
+            <Nav.Item>
+              <Nav.Link eventKey="members">Members</Nav.Link>
+            </Nav.Item>
+          ) : (
+            <></>
+          )}
         </Nav>
 
         <Tab.Content>
@@ -68,7 +75,7 @@ export default function GroupView() {
           </Tab.Pane>
 
           <Tab.Pane eventKey="about">
-            <div>About</div>
+            <GroupAbout about={group?.description ?? ''} />
           </Tab.Pane>
 
           <Tab.Pane eventKey="members">
