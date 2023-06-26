@@ -8,6 +8,7 @@ import GoBackButton from '@/components/GoBackButton';
 import GroupEvents from '@/components/GroupEvents';
 import AuthContext from '@/contexts/AuthContext';
 import GroupAbout from '@/components/GroupAbout';
+import GroupMembers from '@/components/GroupMembers';
 
 interface GroupWithEvents {
   id: number;
@@ -79,7 +80,7 @@ export default function GroupView() {
           </Tab.Pane>
 
           <Tab.Pane eventKey="members">
-            <div>Members</div>
+            <GroupMembers />
           </Tab.Pane>
         </Tab.Content>
       </Tab.Container>
