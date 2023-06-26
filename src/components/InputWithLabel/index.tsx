@@ -12,6 +12,7 @@ interface InputWithLabelProps {
   value?: string;
   disabled?: boolean;
   rows?: number;
+  size?: 'sm' | 'md' | 'lg' | undefined;
 }
 
 export default function InputWithLabel({
@@ -23,7 +24,8 @@ export default function InputWithLabel({
   onChange,
   value,
   disabled,
-  rows
+  rows,
+  size
 }: InputWithLabelProps) {
   return (
     <div className={className}>
@@ -38,6 +40,8 @@ export default function InputWithLabel({
           className={styles.customInput}
           placeholder={placeholder}
           disabled={disabled}
+          // @ts-ignore
+          size={size ?? 'md'}
           // @ts-ignore
           rows={type === 'textarea' ? rows : undefined}
         />
