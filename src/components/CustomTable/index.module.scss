@@ -1,0 +1,14 @@
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+
+.customTable {
+  background: #FFFFFF;
+  border: 1px solid $gray-200;
+  border-radius: 0.5rem;
+
+  padding: 1.5rem 2rem;
+
+  .tableTitle {
+    color: $gray-800;
+  }
+}
