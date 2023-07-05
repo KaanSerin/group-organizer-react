@@ -26,7 +26,7 @@ export default function GroupMembers() {
   const buttons: ActionButton[] = [
     {
       name: 'Remove',
-      onClick: (item: any) => console.log(item),
+      onClick: (item: UserProfile) => console.log(item),
       variant: 'danger'
     }
   ];
