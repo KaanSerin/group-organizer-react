@@ -15,9 +15,10 @@ import {
 } from '@table-library/react-table-library/table';
 import { usePagination } from '@table-library/react-table-library/pagination';
 import { Button, FormControl, Pagination } from 'react-bootstrap';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import CustomPaginator from '@/components/CustomTable/CustomPaginator';
 import InputWithLabel from '@/components/InputWithLabel';
+import axios from '@/libs/axios';
 
 export interface ActionButton {
   name: string;
@@ -25,6 +26,11 @@ export interface ActionButton {
   size?: 'sm' | 'lg' | undefined;
   className?: string;
   onClick: (row: any) => void;
+}
+
+export interface Column {
+  label: string;
+  renderCell?: (item: any) => any;
 }
 
 export default function CustomTable({
@@ -37,7 +43,7 @@ export default function CustomTable({
 }: {
   fetchUrl: string;
   title: string;
-  columns: string[];
+  columns: Column[];
   buttons?: ActionButton[];
   actions: boolean;
   pageLength?: number;
@@ -50,9 +56,10 @@ export default function CustomTable({
       totalPages: 1
     }
   });
+  const [isLoading, setIsLoading] = useState(false);
 
   const headers = [...columns];
-  if (actions) headers.push('Actions');
+  if (actions) headers.push({ label: 'Actions' });
 
   const pagination = usePagination(
     data,
@@ -68,18 +75,42 @@ export default function CustomTable({
     }
   );
 
-  const doGet = useCallback(async (params: any) => {
-    console.log(params);
-  }, []);
+  const doGet = useCallback(async (params: any) => {}, []);
 
   function onPaginationChange(action: any, state: any) {
     doGet({
-      page: state.page + 1,
+      page: state.page,
       pageLength: pageLength
     })
       .then()
       .catch();
   }
+
+  const fetchData = async () => {
+    try {
+      setIsLoading(true);
+      const res = await axios.get(fetchUrl, {
+        params: {
+          page: pagination.state.page,
+          pageLength
+        }
+      });
+      setData({
+        nodes: res.data.data,
+        pageInfo: {
+          totalRows: res.data.meta.total,
+          totalPages: Math.ceil(res.data.meta.total / pageLength)
+        }
+      });
+    } catch (e) {
+      console.log(e);
+    }
+    setIsLoading(false);
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchUrl, pagination.state.page, pageLength]);
 
   return (
     <div className={styles.customTable}>
@@ -93,8 +124,8 @@ export default function CustomTable({
           <>
             <Header>
               <HeaderRow>
-                {headers.map((header: string) => (
-                  <HeaderCell key={header}>{header}</HeaderCell>
+                {headers.map((header: any) => (
+                  <HeaderCell key={header.label}>{header.label}</HeaderCell>
                 ))}
               </HeaderRow>
             </Header>
@@ -102,8 +133,11 @@ export default function CustomTable({
             <Body>
               {tableList.map((item: any) => (
                 <Row key={item.id} item={item}>
-                  <Cell>{item.id}</Cell>
-                  <Cell>{item.name}</Cell>
+                  {columns
+                    .filter((column) => column.renderCell)
+                    .map((column: Column) => (
+                      <Cell key={column.label}>{column.renderCell!(item)}</Cell>
+                    ))}
                   {actions && (
                     <Cell>
                       <div>
