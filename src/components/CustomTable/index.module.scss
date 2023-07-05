@@ -34,4 +34,27 @@
       border-radius: 0.5rem;
     }
   }
+
+  :global(.pagination) {
+    :global(.page-item) {
+      &:global(.active) {
+        :global(.page-link) {
+          color: $white;
+          border-color: $indigo-400;
+          background-color: $indigo-400;
+        }
+      }
+
+      &:not(:global(.active)) {
+        :global(.page-link) {
+          color: $gray-800;
+
+          &:hover {
+            color: $indigo-400;
+            text-decoration: none !important;
+          }
+        }
+      }
+    }
+  }
 }
