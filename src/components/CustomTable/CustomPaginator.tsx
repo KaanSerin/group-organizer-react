@@ -9,6 +9,7 @@ export default function CustomPaginator({
   totalPages: number;
   onPageChange: (page: number) => void;
 }) {
+  // Maximum number of page buttons to be displayed at any given moment
   const MAX_PAGINATION_ITEMS = 7;
 
   let paginationItems: any = [];
@@ -51,7 +52,7 @@ export default function CustomPaginator({
     if (displayedPageLinksToLeft === 0) break;
 
     paginationItems.unshift(
-      <Pagination.Item onClick={() => onPageChange(i)} active={currentPage === i - 1} key={i}>
+      <Pagination.Item onClick={() => onPageChange(i - 1)} active={currentPage === i - 1} key={i}>
         {i}
       </Pagination.Item>
     );
