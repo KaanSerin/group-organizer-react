@@ -175,6 +175,12 @@ export default function CustomTable({
           />
         </div>
       )}
+
+      {isLoading && (
+        <div className={styles.loadingContainer}>
+          <div className={styles.loadingLabel}>Loading...</div>
+        </div>
+      )}
     </div>
   );
 }
