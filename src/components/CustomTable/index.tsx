@@ -15,10 +15,11 @@ import {
 } from '@table-library/react-table-library/table';
 import { usePagination } from '@table-library/react-table-library/pagination';
 import { Button, FormControl, Pagination } from 'react-bootstrap';
-import { useCallback, useEffect, useState } from 'react';
+import { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import CustomPaginator from '@/components/CustomTable/CustomPaginator';
 import InputWithLabel from '@/components/InputWithLabel';
 import axios from '@/libs/axios';
+import { useDebounce } from 'use-debounce';
 
 export interface ActionButton {
   name: string;
@@ -57,6 +58,8 @@ export default function CustomTable({
     }
   });
   const [isLoading, setIsLoading] = useState(false);
+  const [search, setSearch] = useState('');
+  const [searchValue] = useDebounce(search, 500);
 
   const headers = [...columns];
   if (actions) headers.push({ label: 'Actions' });
@@ -92,7 +95,8 @@ export default function CustomTable({
       const res = await axios.get(fetchUrl, {
         params: {
           page: pagination.state.page,
-          pageLength
+          pageLength,
+          search: searchValue
         }
       });
       setData({
@@ -110,14 +114,18 @@ export default function CustomTable({
 
   useEffect(() => {
     fetchData();
-  }, [fetchUrl, pagination.state.page, pageLength]);
+  }, [fetchUrl, pagination.state.page, pageLength, searchValue]);
+
+  const onSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearch(e.target.value);
+  };
 
   return (
     <div className={styles.customTable}>
       <div className={'d-flex w-100 justify-content-between'}>
         <h5 className={styles.tableTitle}>{title}</h5>
 
-        <InputWithLabel size={'sm'} label={'Search'} />
+        <InputWithLabel size={'sm'} label={'Search'} onChange={onSearchChange} />
       </div>
       <Table data={data} theme={theme}>
         {(tableList: any) => (
