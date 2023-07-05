@@ -1,5 +1,6 @@
 @import "bootstrap/scss/functions";
 @import "bootstrap/scss/variables";
+@import 'src/styles/variables';
 
 .eventCard {
   display: flex;
@@ -99,7 +100,7 @@
   }
 
   &:hover {
-    box-shadow: $modal-content-box-shadow-sm-up;
+    box-shadow: $box-shadow-regular;
   }
 }
 

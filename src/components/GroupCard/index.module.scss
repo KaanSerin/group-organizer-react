@@ -1,5 +1,6 @@
 @import "bootstrap/scss/functions";
 @import "bootstrap/scss/variables";
+@import "src/styles/variables";
 
 .groupCard {
   width: 100%;
@@ -83,7 +84,7 @@
   
   &:hover {
     cursor: pointer;
-    box-shadow: $modal-content-box-shadow-sm-up;
+    box-shadow: $box-shadow-regular;
   }
 }
 
