@@ -71,15 +71,15 @@ export default function GroupView() {
         </Nav>
 
         <Tab.Content>
-          <Tab.Pane eventKey="events">
+          <Tab.Pane unmountOnExit={true} eventKey="events">
             <GroupEvents />
           </Tab.Pane>
 
-          <Tab.Pane eventKey="about">
+          <Tab.Pane unmountOnExit={true} eventKey="about">
             <GroupAbout about={group?.description ?? ''} />
           </Tab.Pane>
 
-          <Tab.Pane eventKey="members">
+          <Tab.Pane unmountOnExit={true} eventKey="members">
             <GroupMembers />
           </Tab.Pane>
         </Tab.Content>
