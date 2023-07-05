@@ -11,6 +11,7 @@ export default function CustomPaginator({
 }) {
   // Maximum number of page buttons to be displayed at any given moment
   const MAX_PAGINATION_ITEMS = 7;
+  const MIDDLE_SECTION_PAGE = Math.ceil(MAX_PAGINATION_ITEMS / 2);
 
   let paginationItems: any = [];
 
@@ -30,12 +31,12 @@ export default function CustomPaginator({
     // 3. Page is on the right side ellipsis on the left side
 
     // In the middle
-    if (currentPage >= 4 && totalPages - currentPage >= 4) {
+    if (currentPage >= MIDDLE_SECTION_PAGE && totalPages - currentPage >= MIDDLE_SECTION_PAGE) {
       displayedPageLinksToLeft = 2;
       displayedPageLinksToRight = 1;
     }
     // On the left side
-    else if (currentPage < 4) {
+    else if (currentPage < MIDDLE_SECTION_PAGE) {
       displayedPageLinksToLeft = currentPage;
       displayedPageLinksToRight = totalPaginationItems - displayedPageLinksToLeft - 3;
     }
