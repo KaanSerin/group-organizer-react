@@ -5,13 +5,15 @@ import InfiniteScroll from 'react-infinite-scroller';
 import GroupEventCard, { Event } from '@/components/GroupEventCard';
 import { useState } from 'react';
 import axios from '@/libs/axios';
-import { useParams } from 'next/navigation';
 
-export default function EventsListScroller() {
+interface EventsListScrollerProps {
+  fetchUrl: string;
+}
+
+export default function EventsListScroller({ fetchUrl }: EventsListScrollerProps) {
   const [isLoading, setIsLoading] = useState(true);
   const [events, setEvents] = useState<Event[]>([]);
   const [hasMore, setHasMore] = useState(true);
-  const params = useParams();
   const pageLength = 5;
 
   const getEventsForGroup = async () => {
@@ -26,7 +28,7 @@ export default function EventsListScroller() {
         queryParams['cursor'] = events[events.length - 1]['id'];
       }
 
-      const res = await axios.get(`/groups/${params.id}/events`, {
+      const res = await axios.get(fetchUrl, {
         params: queryParams
       });
 
