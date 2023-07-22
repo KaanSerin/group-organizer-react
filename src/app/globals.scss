@@ -83,4 +83,9 @@ body {
 
 .tab-content {
     padding-top: 2.25rem;
+    flex-grow: 1;
+
+    & > div[role="tabpanel"] {
+        height: 100% !important;
+    }
 }
