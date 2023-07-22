@@ -43,7 +43,7 @@ export default function GroupView() {
   }, []);
 
   return (
-    <div>
+    <div className={'h-100 d-flex flex-column'}>
       <section className={'d-flex align-items-center mb-4'}>
         <GoBackButton href={'/groups'} />
         {!group ? (
