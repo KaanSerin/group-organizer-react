@@ -1,0 +1,10 @@
+.eventsList {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.875rem;
+}
+
+.scrollElement {
+  max-height: 100%;
+  overflow-y: auto;
+}
